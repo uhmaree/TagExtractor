@@ -8,7 +8,6 @@ public class TextTagExtractor {
     private final Set<String> stopWords = new HashSet<>();
     private static final Pattern TOKEN = Pattern.compile("[a-zA-Z]+");
 
-    // Load stop words from file
     public void loadStopWords(Path stopFile) throws IOException {
         stopWords.clear();
         try (BufferedReader br = Files.newBufferedReader(stopFile)) {
@@ -20,7 +19,6 @@ public class TextTagExtractor {
         }
     }
 
-    // Extract tags (keywords) from text file
     public Map<String, Integer> extractTags(Path textFile) throws IOException {
         Map<String, Integer> freq = new HashMap<>();
         try (BufferedReader br = Files.newBufferedReader(textFile)) {
@@ -38,7 +36,6 @@ public class TextTagExtractor {
         return freq;
     }
 
-    // Sort results by frequency (descending), then alphabetically
     public List<Map.Entry<String, Integer>> sortByFrequency(Map<String, Integer> freq) {
         return freq.entrySet()
                 .stream()
@@ -49,7 +46,6 @@ public class TextTagExtractor {
                 .collect(Collectors.toList());
     }
 
-    // Format results for display
     public String formatResults(List<Map.Entry<String, Integer>> entries) {
         StringBuilder sb = new StringBuilder();
         sb.append("Keyword\tFrequency\n");
@@ -59,7 +55,6 @@ public class TextTagExtractor {
         return sb.toString();
     }
 
-    // Save results to file
     public void saveOutput(Path outputFile, String content) throws IOException {
         Files.writeString(outputFile, content);
     }
