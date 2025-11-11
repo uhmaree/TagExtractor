@@ -56,7 +56,6 @@ public class TagExtractorApp extends JFrame {
         add(scroll, BorderLayout.SOUTH);
         add(statusPanel, BorderLayout.PAGE_END);
 
-        // Actions
         chooseTextBtn.addActionListener(this::chooseTextFile);
         chooseStopBtn.addActionListener(this::chooseStopFile);
         runBtn.addActionListener(this::runExtraction);
